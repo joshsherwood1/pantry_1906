@@ -14,13 +14,21 @@ class Pantry
   end
 
   def enough_ingredients_for?(recipe)
+    # @stock
+    # recipe_keys = recipe.ingredients_required
+    # (recipe.ingredients_required.keys & @stock.keys).size == @stock.keys.size
     # recipe.ingredients_required.keys
     # (recipe.ingredients_required.keys & @stock.keys).size == recipe.ingredients_required.keys.size
-    ingredient_differences = @stock.merge!(recipe.ingredients_required){|k, v1, v2| v1 - v2 }.values
-    if ingredient_differences.all?(&:positive?) && (recipe.ingredients_required.keys & @stock.keys).size == recipe.ingredients_required.keys.size
-      return true
-    else ingredient_differences.any?(&:negative?) || (recipe.ingredients_required.keys & @stock.keys).size != recipe.ingredients_required.keys.size
-      return false
-    end
+    ingredient_differences = recipe.ingredients_required.merge!(@stock){|k, v1, v2| v1 - v2 }.values
+     if ingredient_differences.all?(&:negative?)
+       return true
+     else
+       return false
+     end
+    # if ingredient_differences.all?(&:positive?) && recipe.ingredients_required.keys.all?{|i| @stock.keys.include?(i)}
+    #   return true
+    # else ingredient_differences.any?(&:negative?) || recipe.ingredients_required.keys.all?{|i| @stock.keys.include?(i)}
+    #   return false
+    # end
   end
 end
