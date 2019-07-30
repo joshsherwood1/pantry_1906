@@ -9,4 +9,12 @@ class Recipe
   def add_ingredient(ingredient, amount)
     @ingredients_required[ingredient] = amount
   end
+
+  def amount_required(ingredient)
+    @ingredients_required[ingredient]
+  end
+
+  def ingredients
+    @ingredients_required.keys
+  end
 end
