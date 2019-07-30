@@ -39,12 +39,6 @@ class RecipieTest < Minitest::Test
     assert_equal [@cheese, @mac], @mac_and_cheese.ingredients
   end
 
-  def test_obtain_calories_per_serving
-    @mac_and_cheese.add_ingredient(@cheese, 2)
-    @mac_and_cheese.add_ingredient(@mac, 8)
-    assert_equal [100, 30], @mac_and_cheese.obtain_calories_per_serving
-  end
-
   def test_to_find_total_calories
     @mac_and_cheese.add_ingredient(@cheese, 2)
     @mac_and_cheese.add_ingredient(@mac, 8)

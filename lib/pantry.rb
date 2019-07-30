@@ -25,4 +25,17 @@ class Pantry
       return false
     end
   end
+
+# def enough_ingredients_for?(recipe)
+#   positive_differences = []
+#   ingredient_differences = recipe.ingredients_required.merge!(@stock){|k, v1, v2| v1 - v2 }.values
+#   actual_positive_differences = ingredient_differences.find_all do |difference|  #.all?(&:negative?)
+#     difference if difference > 0
+#   end
+#   if positive_differences.count == actual_positive_differences.count
+#     return true
+#   else
+#     return false
+#   end
+# end
 end
