@@ -16,5 +16,13 @@ class RecipieTest < Minitest::Test
 
   def test_that_it_has_attributes
     assert_equal "Mac and Cheese", @mac_and_cheese.name
+    assert_equal ({}), @mac_and_cheese.ingredients_required
+  end
+
+  def test_that_ingredients_have_been_added
+    @mac_and_cheese.add_ingredient(@cheese, 2)
+    @mac_and_cheese.add_ingredient(@mac, 8)
+    expected = {@cheese => 2, @mac => 8}
+    assert_equal expected, @mac_and_cheese.ingredients_required
   end
 end
