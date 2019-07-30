@@ -17,4 +17,13 @@ class Recipe
   def ingredients
     @ingredients_required.keys
   end
+
+  def obtain_calories_per_serving
+    calories_per_serving = @ingredients_required.keys.map do |ingredient|
+      ingredient.calories
+    end
+  end
+
+  def total_calories
+  end
 end
