@@ -16,6 +16,9 @@ class Pantry
   def enough_ingredients_for?(recipe)
     # @stock
     # recipe.ingredients_required
-    #@stock.merge!(recipe.ingredients_required){|k, v1, v2| v1 - v2 }
+    ingredient_differences = @stock.merge!(recipe.ingredients_required){|k, v1, v2| v1 - v2 }.values
+    if recipe.ingredients_required.keys.include?(@stock.keys) && ingredient_differences.all?(&:positive?)
+      return true
+    end
   end
 end
